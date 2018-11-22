@@ -144,6 +144,10 @@
           <div class="pre-scrollable">				
             <ul class="list-group">
                 <a href="#" class="list-group-item"><li>OnePiece MV ASL</li></a>
+                <a href="#" class="list-group-item"><li>OnePiece MV What Faith Can Do</li></a>
+                <a href="#" class="list-group-item"><li>OnePiece MV 2 Years Ago</li></a>
+                <a href="#" class="list-group-item"><li>OnePiece MV Stronger</li></a>
+                <a href="#" class="list-group-item"><li>OnePiece MV 英雄</li></a>
                 <a href="#" class="list-group-item"><li>Sword Art Online MAD 莉兹</li></a>
                 <a href="#" class="list-group-item"><li>Sword Art Online MAD 亚丝娜</li></a>
                 <a href="#" class="list-group-item"><li>Sword Art Online OP1</li></a>
@@ -161,6 +165,7 @@
                 <a href="#" class="list-group-item"><li>阿桑 一直很安静 MV</li></a>
                 <a href="#" class="list-group-item"><li>仙剑奇侠传 MV</li></a>
                 <a href="#" class="list-group-item"><li>AAA 風に薫る夏の記憶 MV</li></a>
+                <a href="#" class="list-group-item"><li>薛之谦 最熟悉的陌生人 微电影</li></a>
                 <a href="#" class="list-group-item"><li>OnePiece OP1 ウィーアー!(WE ARE!)北谷洋版 1-47</li></a>
                 <a href="#" class="list-group-item"><li>OnePiece OP2 Believe 48-115</li></a>
                 <a href="#" class="list-group-item"><li>OnePiece OP3 ヒカリヘ(向着阳光) 116-168</li></a>
@@ -177,9 +182,9 @@
                 <a href="#" class="list-group-item"><li>OnePiece OP14 Fight Together 493-516</li></a>
                 <a href="#" class="list-group-item"><li>OnePiece OP15 ウィーゴー!(WE GO!) 517-590</li></a>
                 <a href="#" class="list-group-item"><li>OnePiece OP16 HANDS UP 591-628</li></a>
-                <!-- <a href="#" class="list-group-item"><li>OnePiece OP17 Wake up 629-686</li></a>
+                <a href="#" class="list-group-item"><li>OnePiece OP17 Wake up 629-686</li></a>
                 <a href="#" class="list-group-item"><li>OnePiece OP18 Hard Knock Days 687-746</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP19 ウィーキャン!(WE CAN!) 747-806</li></a> -->
+                <a href="#" class="list-group-item"><li>OnePiece OP19 ウィーキャン!(WE CAN!) 747-806</li></a>
                 <a href="#" class="list-group-item"><li>OnePiece OP20 Hope 807-855</li></a>
                 <!-- <a href="#" class="list-group-item"><li>OnePiece OP21 Super Powers 856-?</li></a> -->
                 <a href="#" class="list-group-item"><li>OnePiece ED1 Memories 1-30</li></a>
@@ -216,6 +221,10 @@
 
   <script>
     var dplist = ['https://wang926454.gitee.io/listener/Video/OnePiece/MV/01.mp4',
+                'https://wang926454.gitee.io/video/OnePiece01.mp4',
+                'https://wang926454.gitee.io/video/OnePiece02.mp4',
+                'https://wang926454.gitee.io/video/OnePiece03.mp4',
+                'https://wang926454.gitee.io/video/OnePiece04.mp4',
                 'https://wang926454.gitee.io/sao/lizi.mp4',
                 'https://wang926454.gitee.io/sao/yasina.mp4',
                 'https://wang926454.gitee.io/sao/OP1.mp4',
@@ -233,6 +242,7 @@
                 'https://wang926454.gitee.io/listener/Video/Other/yizhi.mp4',
                 'https://wang926454.gitee.io/listener/Video/Other/xianjian.mp4',
                 'https://wang926454.gitee.io/listener/Video/Other/aaa.mp4',
+                'https://wang926454.gitee.io/video/zuishuxi.mp4',
                 'https://wang926454.gitee.io/onepieceop/1-47.mp4',
                 'https://wang926454.gitee.io/onepieceop/48-115.mp4',
                 'https://wang926454.gitee.io/onepieceop/116-168.mp4',
@@ -249,6 +259,9 @@
                 'https://wang926454.gitee.io/onepieceop/493-516.mp4',
                 'https://wang926454.gitee.io/onepieceop/517-590.mp4',
                 'https://wang926454.gitee.io/onepieceop/591-628.mp4',
+                'https://wang926454.gitee.io/onepieceop/629-686.mp4',
+                'https://wang926454.gitee.io/onepieceop/687-746.mp4',
+                'https://wang926454.gitee.io/onepieceop/747-806.mp4',
                 'https://wang926454.gitee.io/onepieceop/807-855.mp4',
                 'https://wang926454.gitee.io/onepieceed/1-30.mp4',
                 'https://wang926454.gitee.io/onepieceed/31-63.mp4',
@@ -269,25 +282,32 @@
                 'https://wang926454.gitee.io/onepieceed/256-263.mp4',
                 'https://wang926454.gitee.io/onepieceed/264-278.mp4'];
 
+    var i = Math.floor(dplist.length * Math.random());
+    
     const dp = new DPlayer({
-        container: document.getElementById('dplayer'),
-        screenshot: false,
-        volume: 1.0,
-        video: {
-            url: dplist[Math.floor(dplist.length * Math.random())],
-            pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
-        }
+      container: document.getElementById('dplayer'),
+      screenshot: false,
+      volume: 1.0,
+      video: {
+          url: dplist[i],
+          pic: 'https://wang926454.gitee.io/reader/Image/201810/normal/01020.png'
+      }
     });
 
     document.getElementById('dplayerDev2').style.display = 'none';
     
+    var liArray = $("ul li");
+    $("#text").html($(liArray[i]).html());
+
     // 随机播放
     function love(){
+      i = Math.floor(dplist.length * Math.random());
+      $("#text").html($(liArray[i]).html());
       document.getElementById('dplayerDev1').style.display = 'inline';
       document.getElementById('dplayerDev2').style.display = 'none';
       dp.switchVideo({
-          url: dplist[Math.floor(dplist.length * Math.random())],
-          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png'
+          url: dplist[i],
+          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
       });
       dp.play();
     }
@@ -305,14 +325,20 @@
 
     // 列表点击
     $("ul li").click(function () {
-        var index = $("ul li").index(this);
-        document.getElementById('dplayerDev1').style.display = 'inline';
-        document.getElementById('dplayerDev2').style.display = 'none';
-        dp.switchVideo({
-            url: dplist[index],
-            pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png'
-        });
-        dp.play();
+      var index = $("ul li").index(this);
+      $("#text").html($(liArray[index]).html());
+      document.getElementById('dplayerDev1').style.display = 'inline';
+      document.getElementById('dplayerDev2').style.display = 'none';
+      dp.switchVideo({
+          url: dplist[index],
+          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png'
+      });
+      dp.play();
+    });
+
+    // 播放结束继续随机播放
+    dp.on('ended', function () {
+      love();
     });
 
     var colors = ['#FF1177','#228DFF','#FFDD1B','#B6FF00','#FF9900','#BA01FF'];
