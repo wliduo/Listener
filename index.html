@@ -129,10 +129,15 @@
 
 <body>
   <div class="middle">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-          <p id="text">MyVideo</p>
-      </div>
 
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div style="margin: 10px auto; display: table;">
+            <a href="https://wang64.cn" target="_blank"><button type="button" class="btn btn-primary">我的主页</button></a> |  
+            <button id="loveBtn" type="button" class="btn btn-danger" onclick="love()">随机切换</button> |
+            <button id="listBtn" type="button" class="btn btn-warning" onclick="list()">全部列表</button>
+        </div>
+      </div>
+      
       <div id="dplayerDev1" class="col-md-12 col-sm-12 col-xs-12">
         <div class="dplayer-wrap">
           <div id="dplayer"></div>
@@ -210,13 +215,10 @@
         </div>
       </div>
     
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div style="margin: 0px auto; display: table;">
-            <a href="https://wang64.cn" target="_blank"><button type="button" class="btn btn-primary">我的主页</button></a> |  
-            <button id="loveBtn" type="button" class="btn btn-danger" onclick="love()">随机切换</button> |
-            <button id="listBtn" type="button" class="btn btn-warning" onclick="list()">全部列表</button>
-        </div>
+      <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+          <p id="text">MyVideo</p>
       </div>
+     
   </div>
 
   <script>
@@ -290,7 +292,7 @@
       volume: 1.0,
       video: {
           url: dplist[i],
-          pic: 'https://wang926454.gitee.io/reader/Image/201810/normal/01020.png'
+          pic: 'https://wang926454.gitee.io/reader/Image/201810/normal/20010.png'
       }
     });
 
