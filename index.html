@@ -128,7 +128,7 @@
 </head>
 
 <body>
-  <div class="middle">
+  <div id="middle" class="middle">
 
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div style="margin: 10px auto; display: table;">
@@ -222,6 +222,24 @@
   </div>
 
   <script>
+    // 检测是否是手机查看
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+        // 跳转移动端页面
+        var middleArray = document.getElementsByClassName("middle");
+        middleArray[0].style.top = "15%";
+    }
+  </script>
+
+  <script>
     var dplist = ['https://wang926454.gitee.io/listener/Video/OnePiece/MV/01.mp4',
                 'https://wang926454.gitee.io/video/OnePiece01.mp4',
                 'https://wang926454.gitee.io/video/OnePiece02.mp4',
@@ -283,9 +301,14 @@
                 'https://wang926454.gitee.io/onepieceed/246-255.mp4',
                 'https://wang926454.gitee.io/onepieceed/256-263.mp4',
                 'https://wang926454.gitee.io/onepieceed/264-278.mp4'];
-
-    var i = Math.floor(dplist.length * Math.random());
     
+    var i = Math.floor(dplist.length * Math.random());
+    var dplayerDev1 = document.getElementById('dplayerDev1');
+    var dplayerDev2 = document.getElementById('dplayerDev2');
+    var liArray = document.getElementsByTagName("li");
+    var text = document.getElementById("text");
+    var listBtn = document.getElementById('listBtn');
+
     const dp = new DPlayer({
       container: document.getElementById('dplayer'),
       screenshot: false,
@@ -295,18 +318,19 @@
           pic: 'https://wang926454.gitee.io/reader/Image/201810/normal/20010.png'
       }
     });
-
-    document.getElementById('dplayerDev2').style.display = 'none';
     
-    var liArray = $("ul li");
-    $("#text").html($(liArray[i]).html());
+    dplayerDev2.style.display = 'none';
+    text.innerHTML = liArray[i].innerHTML;
+    text.title = liArray[i].innerHTML;
 
     // 随机播放
     function love(){
       i = Math.floor(dplist.length * Math.random());
-      $("#text").html($(liArray[i]).html());
-      document.getElementById('dplayerDev1').style.display = 'inline';
-      document.getElementById('dplayerDev2').style.display = 'none';
+      text.innerHTML = liArray[i].innerHTML;
+      text.title = liArray[i].innerHTML;
+      dplayerDev1.style.display = 'inline';
+      dplayerDev2.style.display = 'none';
+      listBtn.innerHTML = "全部列表";
       dp.switchVideo({
           url: dplist[i],
           pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
@@ -317,20 +341,24 @@
     // 显示隐藏列表
     function list(){
       if(document.getElementById('dplayerDev1').style.display == 'none'){
-        document.getElementById('dplayerDev1').style.display = 'inline';
-        document.getElementById('dplayerDev2').style.display = 'none';
+        dplayerDev1.style.display = 'inline';
+        dplayerDev2.style.display = 'none';
+        listBtn.innerHTML = "全部列表";
       }else{
-        document.getElementById('dplayerDev1').style.display = 'none';
-        document.getElementById('dplayerDev2').style.display = 'inline';
+        dplayerDev1.style.display = 'none';
+        dplayerDev2.style.display = 'inline';
+        listBtn.innerHTML = "返回播放";
       }
     }
 
     // 列表点击
     $("ul li").click(function () {
       var index = $("ul li").index(this);
-      $("#text").html($(liArray[index]).html());
-      document.getElementById('dplayerDev1').style.display = 'inline';
-      document.getElementById('dplayerDev2').style.display = 'none';
+      text.innerHTML = liArray[index].innerHTML;
+      text.title = liArray[index].innerHTML;
+      dplayerDev1.style.display = 'inline';
+      dplayerDev2.style.display = 'none';
+      listBtn.innerHTML = "全部列表";
       dp.switchVideo({
           url: dplist[index],
           pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png'
@@ -345,7 +373,6 @@
 
     var colors = ['#FF1177','#228DFF','#FFDD1B','#B6FF00','#FF9900','#BA01FF'];
     var fonts = ['Pacifico','Audiowide','Vampiro One'];
-    var text = document.getElementById("text");
     // 推荐使用setTimeout
     setTimeout(function () {
       text.style.color = colors[Math.floor(colors.length * Math.random())];
