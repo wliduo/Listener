@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <title>视频库</title>
+  <link rel="shortcut icon" href="https://wang64.cn/static/favicon.ico" />
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+  <!-- 垂直居中参考 https://www.cnblogs.com/yugege/p/5246652.html -->
+  <!-- DPlayer源码 https://github.com/MoePlayer/DPlayer -->
+  <style>
+    @font-face {
+      font-family: 'Monoton';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Monoton'), local('Monoton-Regular'), url(https://text.wang64.cn/html5-shine-text/css/font/01.woff) format('woff');
+    }
+
+    @font-face {
+      font-family: 'Pacifico';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://text.wang64.cn/html5-shine-text/css/font/03.woff) format('woff');
+    }
+
+    @font-face {
+      font-family: 'Audiowide';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Audiowide'), local('Audiowide-Regular'), url(https://text.wang64.cn/html5-shine-text/css/font/05.woff) format('woff');
+    }
+
+    @font-face {
+      font-family: 'Vampiro One';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Vampiro One'), local('VampiroOne-Regular'), url(https://text.wang64.cn/html5-shine-text/css/font/06.woff) format('woff');
+    }
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0; 
+        padding: 0;
+    }
+
+    body {
+      background-image: url(https://wang926454.gitee.io/reader/Image/201811/normal/09010.png);
+      /* background-color: #2e2e31; */
+      /* 隐藏滚动条 */
+      overflow: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 14px;
+      height: 14px;
+    }
+    
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      border: 5px solid transparent;
+    }
+    
+    ::-webkit-scrollbar-track {
+      box-shadow: 1px 1px 5px rgba(174, 218, 16, 0.2) inset;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      min-height: 20px;
+      background-clip: content-box;
+      box-shadow: 0 0 0 5px rgba(69, 230, 20, 0.466) inset;
+    }
+    
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
+    .list-group {
+      padding-left: 0;
+      margin-bottom: -5px;
+    }
+
+    #text {
+      text-align: center;
+      font-size: 2em;
+      color: #FF1177;
+      font-family: Monoton;
+    }
+
+    .middle {
+      position: relative;
+      top: 8%;
+      /* transform: translateY(-13%); */
+    }
+
+    .col-center-block {
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .dplayer-wrap {
+      max-width: 700px;
+      margin: 20px auto;
+    }
+
+    .pre-scrollable {
+      max-height: 394px;
+      margin-left: 10px;
+    }
+    
+    ul li {
+      list-style-type: none;
+    }
+  </style>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+</head>
+
+<body>
+  <div id="middle" class="middle">
+
+      <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+        <div style="margin: 0px auto; display: table;">
+          <div class="col-md-6 col-sm-6 col-xs-6" style="margin-left: 8px;">
+              <select id="serachType" class="form-control">
+                <option value="netease">网易云音乐</option>
+                <option value="tencent">QQ音乐</option>
+              </select>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-6" style="margin-left: -16px;">
+              <input id="serachText" type="text" class="form-control" placeholder="请输入关键字">
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+        <div style="margin: 0px auto; display: table;">
+            <a href="https://wang64.cn" target="_blank"><button type="button" class="btn btn-primary">主页</button></a> | 
+            <button id="listBtn" type="button" class="btn btn-warning active" onclick="list()">MV热榜(周四更新)</button> | 
+            <button id="serachBtn" type="button" class="btn btn-info active" onclick="search(this)">搜索</button>
+        </div>
+      </div>
+      
+      <div id="dplayerDev1" class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dplayer-wrap">
+          <div id="dplayer"></div>
+        </div>
+      </div>
+
+      <div id="dplayerDev2" class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dplayer-wrap">
+          <div class="pre-scrollable">				
+            <ul id="ul" class="list-group"></ul>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+          <p id="text">MyVideo</p>
+      </div>
+     
+  </div>
+
+  <script>
+    // 检测是否是手机查看
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+        // 跳转移动端页面
+        var middleArray = document.getElementsByClassName("middle");
+        middleArray[0].style.top = "15%";
+    }
+  </script>
+
+  <script>
+    var dplist = [];
+    
+    var i = Math.floor(dplist.length * Math.random());
+    var dplayerDev1 = document.getElementById('dplayerDev1');
+    var dplayerDev2 = document.getElementById('dplayerDev2');
+    var text = document.getElementById("text");
+    var listBtn = document.getElementById('listBtn');
+
+    const dp = new DPlayer({
+      container: document.getElementById('dplayer'),
+      screenshot: false,
+      volume: 1.0,
+      video: {
+          url: dplist[i].url,
+          pic: 'https://wang926454.gitee.io/reader/Image/201810/normal/20010.png'
+      }
+    });
+
+    // 加载列表
+    function load(){
+      var html = '';
+      for(var i = 0, len = dplist.length; i < len; i++){
+        var a = '<a href="#" class="list-group-item" onclick="dplay('+ i +')"><li>'+ dplist[i].name +'</li></a>'
+        html = html + a;
+      }
+      document.getElementById('ul').innerHTML = html;
+    }
+
+    dplayerDev2.style.display = 'none';
+    text.innerHTML = dplist[i].name;
+    text.title = dplist[i].name;
+
+    // 初始化加载全部列表
+    load();
+
+    // 随机播放
+    function love(){
+      i = Math.floor(dplist.length * Math.random());
+      text.innerHTML = dplist[i].name;
+      text.title = dplist[i].name;
+      dplayerDev1.style.display = 'inline';
+      dplayerDev2.style.display = 'none';
+      listBtn.innerHTML = "全部列表";
+      dp.switchVideo({
+          url: dplist[i].url,
+          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
+      });
+      dp.play();
+    }
+    
+    function dplay(index){
+      i = index;
+      text.innerHTML = dplist[index].name;
+      text.title = dplist[index].name;
+      dplayerDev1.style.display = 'inline';
+      dplayerDev2.style.display = 'none';
+      listBtn.innerHTML = "全部列表";
+      dp.switchVideo({
+          url: dplist[index].url,
+          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png'
+      });
+      dp.play();
+    }
+
+    // 界面切换
+    function list(){
+      if(document.getElementById('dplayerDev1').style.display == 'none'){
+        dplayerDev1.style.display = 'inline';
+        dplayerDev2.style.display = 'none';
+        listBtn.innerHTML = "全部列表";
+      }else{
+        dplayerDev1.style.display = 'none';
+        dplayerDev2.style.display = 'inline';
+        listBtn.innerHTML = "返回播放";
+      }
+    }
+
+    // 播放结束继续播放
+    dp.on('ended', function () {
+      i = i + 1;
+      if(i >= dplist.length){
+        i = 0;
+      }
+      text.innerHTML = dplist[i].name;
+      text.title = dplist[i].name;
+      dplayerDev1.style.display = 'inline';
+      dplayerDev2.style.display = 'none';
+      listBtn.innerHTML = "全部列表";
+      dp.switchVideo({
+          url: dplist[i].url,
+          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
+      });
+      dp.play();
+    });
+
+    var colors = ['#FF1177','#228DFF','#FFDD1B','#B6FF00','#FF9900','#BA01FF'];
+    var fonts = ['Pacifico','Audiowide','Vampiro One'];
+    // 推荐使用setTimeout
+    setTimeout(function () {
+      text.style.color = colors[Math.floor(colors.length * Math.random())];
+      text.style.fontFamily = fonts[Math.floor(fonts.length * Math.random())];
+      setTimeout(arguments.callee, 1000);
+    }, 1000);
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1826dd4e676f6c917705c5632139f6dd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script type="text/javascript" src="https://wang926454.gitee.io/reader/JS/love.js"></script>
+</body>
+
+</html>

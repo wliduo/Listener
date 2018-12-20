@@ -108,23 +108,18 @@
       max-width: 700px;
       margin: 20px auto;
     }
+
+    .pre-scrollable {
+      max-height: 394px;
+      margin-left: 10px;
+    }
     
     ul li {
       list-style-type: none;
     }
   </style>
-  <script>
-    var _hmt = _hmt || [];
-    (function () {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?1826dd4e676f6c917705c5632139f6dd";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
-  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -132,9 +127,10 @@
 
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div style="margin: 10px auto; display: table;">
-            <a href="https://wang64.cn" target="_blank"><button type="button" class="btn btn-primary">我的主页</button></a> |  
+            <a href="https://wang64.cn" target="_blank"><button type="button" class="btn btn-primary">主页</button></a> |  
             <button id="loveBtn" type="button" class="btn btn-danger" onclick="love()">随机切换</button> |
-            <button id="listBtn" type="button" class="btn btn-warning active" onclick="list()">全部列表</button>
+            <button id="listBtn" type="button" class="btn btn-warning active" onclick="list()">列表</button> |  
+            <a href="https://lis.wang64.cn/search" target="_blank"><button type="button" class="btn btn-info active">MV搜索</button></a>
         </div>
       </div>
       
@@ -147,70 +143,7 @@
       <div id="dplayerDev2" class="col-md-12 col-sm-12 col-xs-12">
         <div class="dplayer-wrap">
           <div class="pre-scrollable">				
-            <ul class="list-group">
-                <a href="#" class="list-group-item"><li>OnePiece MV ASL</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece MV What Faith Can Do</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece MV 2 Years Ago</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece MV Stronger</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece MV 英雄</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online MAD 莉兹</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online MAD 亚丝娜</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online OP1</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online OP2</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online OP3</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online OP4</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online OP5</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online OP6</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online ED1</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online ED2</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online MAD1</li></a>
-                <a href="#" class="list-group-item"><li>Sword Art Online MAD2</li></a>
-                <a href="#" class="list-group-item"><li>Clannad MV</li></a>
-                <a href="#" class="list-group-item"><li>狐妖小红娘 若当来世 MV</li></a>
-                <a href="#" class="list-group-item"><li>阿桑 一直很安静 MV</li></a>
-                <a href="#" class="list-group-item"><li>仙剑奇侠传 MV</li></a>
-                <a href="#" class="list-group-item"><li>AAA 風に薫る夏の記憶 MV</li></a>
-                <a href="#" class="list-group-item"><li>薛之谦 最熟悉的陌生人 微电影</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP1 ウィーアー!(WE ARE!)北谷洋版 1-47</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP2 Believe 48-115</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP3 ヒカリヘ(向着阳光) 116-168</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP4 BON VOYAGE!(一路顺风!) 169-206</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP5 ココロのちず (心之航海图) 207-263</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP6 BRAND NEW WORLD 264-278</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP7 ウィーアー!(WE ARE!)7人版 279-283</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP8 Crazy Rainbow 284-325</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP9 Jungle P 326-372</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP10 ウィーアー!(WE ARE!) 东方神起版 373-394</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP11 Share The World 395-425</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP12 风をさがして(寻找风) 426-458</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP13 One Day 459-492</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP14 Fight Together 493-516</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP15 ウィーゴー!(WE GO!) 517-590</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP16 HANDS UP 591-628</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP17 Wake up 629-686</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP18 Hard Knock Days 687-746</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP19 ウィーキャン!(WE CAN!) 747-806</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece OP20 Hope 807-855</li></a>
-                <!-- <a href="#" class="list-group-item"><li>OnePiece OP21 Super Powers 856-?</li></a> -->
-                <a href="#" class="list-group-item"><li>OnePiece ED1 Memories 1-30</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED2 RUN! RUN! RUN! 31-63</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED3 私がいるよ(I'm Right Here) 64-73</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED4 しょうちのすけ(That's a fact) 74-81</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED5 BEFORE DAWN 82-94</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED6 Fish 95-106</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED7 君がいるから(因为有你) 107-118</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED8 Shining Ray 119-132</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED9 Free Will 133-156</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED10 Faith 157-168</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED11 A to Z 169-181</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED12 月と太阳 182-195</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED13 DREAM SHIP 196-206</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED14 未来航海 207-230</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED15 Eternal Pose(エターナルポーズ) 231-245</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED16 Dear friends 246-255</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED17 明日は来るから 256-263</li></a>
-                <a href="#" class="list-group-item"><li>OnePiece ED18 ADVENTURE WORLD(冒险世界) 264-278</li></a>
-            </ul>
+            <ul id="ul" class="list-group"></ul>
           </div>
         </div>
       </div>
@@ -240,72 +173,322 @@
   </script>
 
   <script>
-    var dplist = ['https://wang926454.gitee.io/listener/Video/OnePiece/MV/01.mp4',
-                'https://wang926454.gitee.io/video/OnePiece01.mp4',
-                'https://wang926454.gitee.io/video/OnePiece02.mp4',
-                'https://wang926454.gitee.io/video/OnePiece03.mp4',
-                'https://wang926454.gitee.io/video/OnePiece04.mp4',
-                'https://wang926454.gitee.io/sao/lizi.mp4',
-                'https://wang926454.gitee.io/sao/yasina.mp4',
-                'https://wang926454.gitee.io/sao/OP1.mp4',
-                'https://wang926454.gitee.io/sao/OP2.mp4',
-                'https://wang926454.gitee.io/sao/OP3.mp4',
-                'https://wang926454.gitee.io/sao/OP4.mp4',
-                'https://wang926454.gitee.io/sao/OP5.mp4',
-                'https://wang926454.gitee.io/sao/OP6.mp4',
-                'https://wang926454.gitee.io/sao/ED1.mp4',
-                'https://wang926454.gitee.io/sao/ED2.mp4',
-                'https://wang926454.gitee.io/sao/MAD1.mp4',
-                'https://wang926454.gitee.io/sao/MAD2.mp4',
-                'https://wang926454.gitee.io/listener/Video/Other/clannad.mp4',
-                'https://wang926454.gitee.io/listener/Video/Other/huyao.mp4',
-                'https://wang926454.gitee.io/listener/Video/Other/yizhi.mp4',
-                'https://wang926454.gitee.io/listener/Video/Other/xianjian.mp4',
-                'https://wang926454.gitee.io/listener/Video/Other/aaa.mp4',
-                'https://wang926454.gitee.io/video/zuishuxi.mp4',
-                'https://wang926454.gitee.io/onepieceop/1-47.mp4',
-                'https://wang926454.gitee.io/onepieceop/48-115.mp4',
-                'https://wang926454.gitee.io/onepieceop/116-168.mp4',
-                'https://wang926454.gitee.io/onepieceop/169-206.mp4',
-                'https://wang926454.gitee.io/onepieceop/207-263.mp4',
-                'https://wang926454.gitee.io/onepieceop/264-278.mp4',
-                'https://wang926454.gitee.io/onepieceop/279-283.mp4',
-                'https://wang926454.gitee.io/onepieceop/284-325.mp4',
-                'https://wang926454.gitee.io/onepieceop/326-372.mp4',
-                'https://wang926454.gitee.io/onepieceop/373-394.mp4',
-                'https://wang926454.gitee.io/onepieceop/395-425.mp4',
-                'https://wang926454.gitee.io/onepieceop/426-458.mp4',
-                'https://wang926454.gitee.io/onepieceop/459-492.mp4',
-                'https://wang926454.gitee.io/onepieceop/493-516.mp4',
-                'https://wang926454.gitee.io/onepieceop/517-590.mp4',
-                'https://wang926454.gitee.io/onepieceop/591-628.mp4',
-                'https://wang926454.gitee.io/onepieceop/629-686.mp4',
-                'https://wang926454.gitee.io/onepieceop/687-746.mp4',
-                'https://wang926454.gitee.io/onepieceop/747-806.mp4',
-                'https://wang926454.gitee.io/onepieceop/807-855.mp4',
-                'https://wang926454.gitee.io/onepieceed/1-30.mp4',
-                'https://wang926454.gitee.io/onepieceed/31-63.mp4',
-                'https://wang926454.gitee.io/onepieceed/64-73.mp4',
-                'https://wang926454.gitee.io/onepieceed/74-81.mp4',
-                'https://wang926454.gitee.io/onepieceed/82-94.mp4',
-                'https://wang926454.gitee.io/onepieceed/95-106.mp4',
-                'https://wang926454.gitee.io/onepieceed/107-118.mp4',
-                'https://wang926454.gitee.io/onepieceed/119-132.mp4',
-                'https://wang926454.gitee.io/onepieceed/133-156.mp4',
-                'https://wang926454.gitee.io/onepieceed/157-168.mp4',
-                'https://wang926454.gitee.io/onepieceed/169-181.mp4',
-                'https://wang926454.gitee.io/onepieceed/182-195.mp4',
-                'https://wang926454.gitee.io/onepieceed/196-206.mp4',
-                'https://wang926454.gitee.io/onepieceed/207-230.mp4',
-                'https://wang926454.gitee.io/onepieceed/231-245.mp4',
-                'https://wang926454.gitee.io/onepieceed/246-255.mp4',
-                'https://wang926454.gitee.io/onepieceed/256-263.mp4',
-                'https://wang926454.gitee.io/onepieceed/264-278.mp4'];
+    var dplist = [
+      {
+        name: 'OnePiece MV ASL',
+        url: 'https://wang926454.gitee.io/listener/Video/OnePiece/MV/01.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece MV What Faith Can Do',
+        url: 'https://wang926454.gitee.io/video/OnePiece01.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece MV 2 Years Ago',
+        url: 'https://wang926454.gitee.io/video/OnePiece02.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece MV Stronger',
+        url: 'https://wang926454.gitee.io/video/OnePiece03.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece MV 英雄',
+        url: 'https://wang926454.gitee.io/video/OnePiece04.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online MAD 莉兹',
+        url: 'https://wang926454.gitee.io/sao/lizi.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online MAD 亚丝娜',
+        url: 'https://wang926454.gitee.io/sao/yasina.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online OP1',
+        url: 'https://wang926454.gitee.io/sao/OP1.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online OP2',
+        url: 'https://wang926454.gitee.io/sao/OP2.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online OP3',
+        url: 'https://wang926454.gitee.io/sao/OP3.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online OP4',
+        url: 'https://wang926454.gitee.io/sao/OP4.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online OP5',
+        url: 'https://wang926454.gitee.io/sao/OP5.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online OP6',
+        url: 'https://wang926454.gitee.io/sao/OP6.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online ED1',
+        url: 'https://wang926454.gitee.io/sao/ED1.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online ED2',
+        url: 'https://wang926454.gitee.io/sao/ED2.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online MAD1',
+        url: 'https://wang926454.gitee.io/sao/MAD1.mp4',
+        pic: ''
+      },
+      {
+        name: 'Sword Art Online MAD2',
+        url: 'https://wang926454.gitee.io/sao/MAD2.mp4',
+        pic: ''
+      },
+      {
+        name: 'Clannad MV',
+        url: 'https://wang926454.gitee.io/listener/Video/Other/clannad.mp4',
+        pic: ''
+      },
+      {
+        name: '狐妖小红娘 若当来世 MV',
+        url: 'https://wang926454.gitee.io/listener/Video/Other/huyao.mp4',
+        pic: ''
+      },
+      {
+        name: '阿桑 一直很安静 MV',
+        url: 'https://wang926454.gitee.io/listener/Video/Other/yizhi.mp4',
+        pic: ''
+      },
+      {
+        name: '仙剑奇侠传 MV',
+        url: 'https://wang926454.gitee.io/listener/Video/Other/xianjian.mp4',
+        pic: ''
+      },
+      {
+        name: 'AAA 風に薫る夏の記憶 MV',
+        url: 'https://wang926454.gitee.io/listener/Video/Other/aaa.mp4',
+        pic: ''
+      },
+      {
+        name: '薛之谦 最熟悉的陌生人 微电影',
+        url: 'https://wang926454.gitee.io/video/zuishuxi.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP1 ウィーアー!(WE ARE!)北谷洋版 1-47',
+        url: 'https://wang926454.gitee.io/onepieceop/1-47.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP2 Believe 48-115',
+        url: 'https://wang926454.gitee.io/onepieceop/48-115.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP3 ヒカリヘ(向着阳光) 116-168',
+        url: 'https://wang926454.gitee.io/onepieceop/116-168.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP4 BON VOYAGE!(一路顺风!) 169-206',
+        url: 'https://wang926454.gitee.io/onepieceop/169-206.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP5 ココロのちず (心之航海图) 207-263',
+        url: 'https://wang926454.gitee.io/onepieceop/207-263.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP6 BRAND NEW WORLD 264-278',
+        url: 'https://wang926454.gitee.io/onepieceop/264-278.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP7 ウィーアー!(WE ARE!)7人版 279-283',
+        url: 'https://wang926454.gitee.io/onepieceop/279-283.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP8 Crazy Rainbow 284-325',
+        url: 'https://wang926454.gitee.io/onepieceop/284-325.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP9 Jungle P 326-372',
+        url: 'https://wang926454.gitee.io/onepieceop/326-372.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP10 ウィーアー!(WE ARE!) 东方神起版 373-394',
+        url: 'https://wang926454.gitee.io/onepieceop/373-394.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP11 Share The World 395-425',
+        url: 'https://wang926454.gitee.io/onepieceop/395-425.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP12 风をさがして(寻找风) 426-458',
+        url: 'https://wang926454.gitee.io/onepieceop/426-458.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP13 One Day 459-492',
+        url: 'https://wang926454.gitee.io/onepieceop/459-492.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP14 Fight Together 493-516',
+        url: 'https://wang926454.gitee.io/onepieceop/493-516.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP15 ウィーゴー!(WE GO!) 517-590',
+        url: 'https://wang926454.gitee.io/onepieceop/517-590.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP16 HANDS UP 591-628',
+        url: 'https://wang926454.gitee.io/onepieceop/591-628.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP17 Wake up 629-686',
+        url: 'https://wang926454.gitee.io/onepieceop/629-686.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP18 Hard Knock Days 687-746',
+        url: 'https://wang926454.gitee.io/onepieceop/687-746.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP19 ウィーキャン!(WE CAN!) 747-806',
+        url: 'https://wang926454.gitee.io/onepieceop/747-806.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece OP20 Hope 807-855',
+        url: 'https://wang926454.gitee.io/onepieceop/807-855.mp4',
+        pic: ''
+      },
+      /* {
+        name: 'OnePiece OP21 Super Powers 856-?',
+        url: '',
+        pic: ''
+      }, */
+      {
+        name: 'OnePiece ED1 Memories 1-30',
+        url: 'https://wang926454.gitee.io/onepieceed/1-30.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED2 RUN! RUN! RUN! 31-63',
+        url: 'https://wang926454.gitee.io/onepieceed/31-63.mp4',
+        pic: ''
+      },
+      {
+        name: "OnePiece ED3 私がいるよ(I'm Right Here) 64-73",
+        url: 'https://wang926454.gitee.io/onepieceed/64-73.mp4',
+        pic: ''
+      },
+      {
+        name: "OnePiece ED4 しょうちのすけ(That's a fact) 74-81",
+        url: 'https://wang926454.gitee.io/onepieceed/74-81.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED5 BEFORE DAWN 82-94',
+        url: 'https://wang926454.gitee.io/onepieceed/82-94.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED6 Fish 95-106',
+        url: 'https://wang926454.gitee.io/onepieceed/95-106.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED7 君がいるから(因为有你) 107-118',
+        url: 'https://wang926454.gitee.io/onepieceed/107-118.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED8 Shining Ray 119-132',
+        url: 'https://wang926454.gitee.io/onepieceed/119-132.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED9 Free Will 133-156',
+        url: 'https://wang926454.gitee.io/onepieceed/133-156.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED10 Faith 157-168',
+        url: 'https://wang926454.gitee.io/onepieceed/157-168.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED11 A to Z 169-181',
+        url: 'https://wang926454.gitee.io/onepieceed/169-181.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED12 月と太阳 182-195',
+        url: 'https://wang926454.gitee.io/onepieceed/182-195.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED13 DREAM SHIP 196-206',
+        url: 'https://wang926454.gitee.io/onepieceed/196-206.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED14 未来航海 207-230',
+        url: 'https://wang926454.gitee.io/onepieceed/207-230.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED15 Eternal Pose(エターナルポーズ) 231-245',
+        url: 'https://wang926454.gitee.io/onepieceed/231-245.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED16 Dear friends 246-255',
+        url: 'https://wang926454.gitee.io/onepieceed/246-255.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED17 明日は来るから 256-263',
+        url: 'https://wang926454.gitee.io/onepieceed/256-263.mp4',
+        pic: ''
+      },
+      {
+        name: 'OnePiece ED18 ADVENTURE WORLD(冒险世界) 264-278',
+        url: 'https://wang926454.gitee.io/onepieceed/264-278.mp4',
+        pic: ''
+      }
+    ];
     
     var i = Math.floor(dplist.length * Math.random());
     var dplayerDev1 = document.getElementById('dplayerDev1');
     var dplayerDev2 = document.getElementById('dplayerDev2');
-    var liArray = document.getElementsByTagName("li");
     var text = document.getElementById("text");
     var listBtn = document.getElementById('listBtn');
 
@@ -314,31 +497,58 @@
       screenshot: false,
       volume: 1.0,
       video: {
-          url: dplist[i],
+          url: dplist[i].url,
           pic: 'https://wang926454.gitee.io/reader/Image/201810/normal/20010.png'
       }
     });
-    
+
+    // 加载列表
+    function load(){
+      var html = '';
+      for(var i = 0, len = dplist.length; i < len; i++){
+        var a = '<a href="#" class="list-group-item" onclick="dplay('+ i +')"><li>'+ dplist[i].name +'</li></a>'
+        html = html + a;
+      }
+      document.getElementById('ul').innerHTML = html;
+    }
+
     dplayerDev2.style.display = 'none';
-    text.innerHTML = liArray[i].innerHTML;
-    text.title = liArray[i].innerHTML;
+    text.innerHTML = dplist[i].name;
+    text.title = dplist[i].name;
+
+    // 初始化加载全部列表
+    load();
 
     // 随机播放
     function love(){
       i = Math.floor(dplist.length * Math.random());
-      text.innerHTML = liArray[i].innerHTML;
-      text.title = liArray[i].innerHTML;
+      text.innerHTML = dplist[i].name;
+      text.title = dplist[i].name;
       dplayerDev1.style.display = 'inline';
       dplayerDev2.style.display = 'none';
       listBtn.innerHTML = "全部列表";
       dp.switchVideo({
-          url: dplist[i],
+          url: dplist[i].url,
           pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
       });
       dp.play();
     }
+    
+    function dplay(index){
+      i = index;
+      text.innerHTML = dplist[index].name;
+      text.title = dplist[index].name;
+      dplayerDev1.style.display = 'inline';
+      dplayerDev2.style.display = 'none';
+      listBtn.innerHTML = "全部列表";
+      dp.switchVideo({
+          url: dplist[index].url,
+          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png'
+      });
+      dp.play();
+    }
 
-    // 显示隐藏列表
+    // 界面切换
     function list(){
       if(document.getElementById('dplayerDev1').style.display == 'none'){
         dplayerDev1.style.display = 'inline';
@@ -351,24 +561,22 @@
       }
     }
 
-    // 列表点击
-    $("ul li").click(function () {
-      var index = $("ul li").index(this);
-      text.innerHTML = liArray[index].innerHTML;
-      text.title = liArray[index].innerHTML;
+    // 播放结束继续播放
+    dp.on('ended', function () {
+      i = i + 1;
+      if(i >= dplist.length){
+        i = 0;
+      }
+      text.innerHTML = dplist[i].name;
+      text.title = dplist[i].name;
       dplayerDev1.style.display = 'inline';
       dplayerDev2.style.display = 'none';
       listBtn.innerHTML = "全部列表";
       dp.switchVideo({
-          url: dplist[index],
-          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png'
+          url: dplist[i].url,
+          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
       });
       dp.play();
-    });
-
-    // 播放结束继续随机播放
-    dp.on('ended', function () {
-      love();
     });
 
     var colors = ['#FF1177','#228DFF','#FFDD1B','#B6FF00','#FF9900','#BA01FF'];
@@ -379,6 +587,15 @@
       text.style.fontFamily = fonts[Math.floor(fonts.length * Math.random())];
       setTimeout(arguments.callee, 1000);
     }, 1000);
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1826dd4e676f6c917705c5632139f6dd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
   </script>
   <script type="text/javascript" src="https://wang926454.gitee.io/reader/JS/love.js"></script>
 </body>
