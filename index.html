@@ -110,7 +110,6 @@
     }
 
     .pre-scrollable {
-      max-height: 394px;
       margin-left: 10px;
     }
     
@@ -169,6 +168,9 @@
         // 跳转移动端页面
         var middleArray = document.getElementsByClassName("middle");
         middleArray[0].style.top = "15%";
+    } else {
+        var classArray = document.getElementsByClassName("pre-scrollable");
+        classArray[0].style.maxHeight = "394px";
     }
   </script>
 
@@ -506,7 +508,8 @@
     function load(){
       var html = '';
       for(var i = 0, len = dplist.length; i < len; i++){
-        var a = '<a href="#" class="list-group-item" onclick="dplay('+ i +')"><li>'+ dplist[i].name +'</li></a>'
+        var name = parseInt(i) + parseInt(1) + '.' + dplist[i].name;
+        var a = '<a href="#" class="list-group-item" onclick="dplay('+ i +')"><li>'+ name +'</li></a>';
         html = html + a;
       }
       document.getElementById('ul').innerHTML = html;

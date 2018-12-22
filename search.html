@@ -110,7 +110,6 @@
     }
 
     .pre-scrollable {
-      max-height: 394px;
       margin-left: 10px;
     }
     
@@ -120,6 +119,8 @@
   </style>
   <!-- <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
 </head>
 
 <body>
@@ -142,7 +143,7 @@
       <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
         <div style="margin: 0px auto; display: table;">
             <a href="https://wang64.cn" target="_blank"><button type="button" class="btn btn-primary">主页</button></a> | 
-            <button id="listBtn" type="button" class="btn btn-warning active" onclick="list()">MV热榜(周四更新)</button> | 
+            <button id="listBtn" type="button" class="btn btn-warning active" onclick="list()">网易云音乐MV排行榜</button> | 
             <button id="serachBtn" type="button" class="btn btn-info active" onclick="search(this)">搜索</button>
         </div>
       </div>
@@ -182,13 +183,64 @@
         // 跳转移动端页面
         var middleArray = document.getElementsByClassName("middle");
         middleArray[0].style.top = "15%";
+    } else {
+        var classArray = document.getElementsByClassName("pre-scrollable");
+        classArray[0].style.maxHeight = "394px";
     }
   </script>
 
   <script>
+    var api = 'https://api.bzqll.com/music/';
     var dplist = [];
+    var slist = [];
+
+    try {
+      // 步骤一: 创建异步对象
+      var ajax = new XMLHttpRequest();
+      if (window.XMLHttpRequest) {
+          ajax = new XMLHttpRequest();
+      } else {
+          // IE6及其以下版本浏览器
+          ajax = new ActiveXObject('Microsoft.XMLHTTP');
+      }
+      // 步骤二: 设置请求的url参数 参数一是请求的类型 参数二是请求的url 可以带参数 动态的传递参数starName到服务端
+      // ajax.open('get', 'getStar.php?starName='+name);
+      ajax.open('get', api + 'netease/topMvList?key=579621905&limit=100&offset=0', false);
+      // 步骤三: 注册事件 onreadystatechange 状态改变就会调用 定义返回触发的函数 定义在send之前 不然同步请求就出问题
+      ajax.onreadystatechange = function () {
+          if (ajax.readyState == 4 && ajax.status == 200) {
+              // 步骤五: 如果能够进到这个判断 说明 数据 完美的回来了 并且请求的页面是存在的
+              // console.log(ajax.responseText);
+              var array = JSON.parse(ajax.responseText);
+              dplist = array.data;
+              // console.log(dplist);
+          }
+      }
+      // 步骤四: 发送请求
+      ajax.send();
+    }
+    catch(err) {
+
+    } 
+    finally {
+        
+    }
+
+    // 加载列表
+    function load(){
+      var html = '';
+      for(var i = 0, len = dplist.length; i < len; i++){
+        var name = parseInt(i) + parseInt(1) + '.' + dplist[i].singer + '-' + dplist[i].name;
+        var a = '<a href="#" class="list-group-item" onclick="dplay('+ i +')"><li>'+ name +'</li></a>';
+        html = html + a;
+      }
+      document.getElementById('ul').innerHTML = html;
+    }
+
+    // 初始化加载全部列表
+    load();
     
-    var i = Math.floor(dplist.length * Math.random());
+    var i = 0;
     var dplayerDev1 = document.getElementById('dplayerDev1');
     var dplayerDev2 = document.getElementById('dplayerDev2');
     var text = document.getElementById("text");
@@ -204,37 +256,9 @@
       }
     });
 
-    // 加载列表
-    function load(){
-      var html = '';
-      for(var i = 0, len = dplist.length; i < len; i++){
-        var a = '<a href="#" class="list-group-item" onclick="dplay('+ i +')"><li>'+ dplist[i].name +'</li></a>'
-        html = html + a;
-      }
-      document.getElementById('ul').innerHTML = html;
-    }
-
     dplayerDev2.style.display = 'none';
-    text.innerHTML = dplist[i].name;
-    text.title = dplist[i].name;
-
-    // 初始化加载全部列表
-    load();
-
-    // 随机播放
-    function love(){
-      i = Math.floor(dplist.length * Math.random());
-      text.innerHTML = dplist[i].name;
-      text.title = dplist[i].name;
-      dplayerDev1.style.display = 'inline';
-      dplayerDev2.style.display = 'none';
-      listBtn.innerHTML = "全部列表";
-      dp.switchVideo({
-          url: dplist[i].url,
-          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
-      });
-      dp.play();
-    }
+    text.innerHTML = dplist[i].singer + '-' + dplist[i].name;
+    text.title = dplist[i].singer + '-' + dplist[i].name;
     
     function dplay(index){
       i = index;
@@ -242,10 +266,10 @@
       text.title = dplist[index].name;
       dplayerDev1.style.display = 'inline';
       dplayerDev2.style.display = 'none';
-      listBtn.innerHTML = "全部列表";
+      listBtn.innerHTML = "网易云音乐MV排行榜";
       dp.switchVideo({
           url: dplist[index].url,
-          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png'
+          pic: dplist[index].pic
       });
       dp.play();
     }
@@ -255,31 +279,47 @@
       if(document.getElementById('dplayerDev1').style.display == 'none'){
         dplayerDev1.style.display = 'inline';
         dplayerDev2.style.display = 'none';
-        listBtn.innerHTML = "全部列表";
+        listBtn.innerHTML = "网易云音乐MV排行榜";
       }else{
         dplayerDev1.style.display = 'none';
         dplayerDev2.style.display = 'inline';
         listBtn.innerHTML = "返回播放";
       }
     }
-
-    // 播放结束继续播放
-    dp.on('ended', function () {
-      i = i + 1;
-      if(i >= dplist.length){
-        i = 0;
+    
+    function search(btn) {
+      // 开始执行，先将按钮置为不可用，执行完后设置可用
+      btn.disabled = true;
+      var serachType = document.getElementById("serachType").value;
+      var serachText = document.getElementById("serachText").value;
+      if(serachText.trim() === ''){
+        layer.msg('关键字为空');
+        btn.disabled = false;
+        return;
       }
-      text.innerHTML = dplist[i].name;
-      text.title = dplist[i].name;
-      dplayerDev1.style.display = 'inline';
-      dplayerDev2.style.display = 'none';
-      listBtn.innerHTML = "全部列表";
-      dp.switchVideo({
-          url: dplist[i].url,
-          pic: 'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png'
-      });
-      dp.play();
-    });
+      var type = 'mv';
+      if(serachType == 'netease') {
+        type = 'video'
+      }
+      var url = api + serachType + '/search?key=579621905&limit=100&offset=0&s=' + serachText + '&type=' + type;
+      /* $.ajax({
+          url: url,
+          success: function (list) {
+            // var array = JSON.parse(list);
+            slist = list.data;
+            console.log(url);
+            console.log(slist);
+            if(slist.length > 0){
+              
+            }else{
+              layer.msg('没有搜索到任何结果，请切换平台尝试');
+            }
+            btn.disabled = false;
+          }
+      }); */
+      layer.msg('搜索功能暂时不可用');
+      btn.disabled = false;
+    }
 
     var colors = ['#FF1177','#228DFF','#FFDD1B','#B6FF00','#FF9900','#BA01FF'];
     var fonts = ['Pacifico','Audiowide','Vampiro One'];
